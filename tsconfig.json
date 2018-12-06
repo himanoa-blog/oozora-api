@@ -10,7 +10,7 @@
       "esnext"
     ],
     "typeRoots": ["types", "node_modules/@types"],
-    "types": ["node", "jest"],
+    "types": ["node"],
     "paths": {"promise-mysql": ["types/promise-mysql"]}
   }
 }
