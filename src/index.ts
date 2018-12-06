@@ -50,12 +50,7 @@ function cors(
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 }
-const middlewares = [
-  createLogger(),
-  bodyParser.json(),
-  cors,
-  errorHandler
-];
+const middlewares = [createLogger(), bodyParser.json(), cors, errorHandler];
 
 const app = applyRouter(
   middlewares.reduce(

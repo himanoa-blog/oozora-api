@@ -3,5 +3,5 @@ import express from "express";
 
 test("エラーにならないこと", () => {
   expect(applyRouter(express())).toBeDefined();
-  console.log("poe")
+  console.log("poe");
 });

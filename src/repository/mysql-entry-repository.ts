@@ -18,7 +18,6 @@ export class MySqlEntryRepository implements EntryRepository {
     return await Promise.all(result.map(val => parseEntry(val)));
   }
 
-
   async resolve(id: number): Promise<Entry> {
     const query = "SELECT * FROM `entries` WHERE `id`=?";
     const result = await this.conn.query(query, id);
