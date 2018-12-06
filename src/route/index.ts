@@ -1,6 +1,6 @@
 import * as Express from "express";
 import { wrapAsync } from "./error-handler";
-import entry from "./entry"
+import entry from "./entry";
 
 const router = Express.Router();
 
