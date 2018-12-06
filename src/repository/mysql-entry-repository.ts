@@ -14,7 +14,7 @@ export class MySqlEntryRepository implements EntryRepository {
 
   async list(offsetId: number, limit: number): Promise<Entry[]> {
     const query = "SELECT * FROM `entries` ORDER BY `id` DESC LIMIT ?, ?;";
-    const result = await this.conn.query(query, [limit, offsetId]);
+    const result = await this.conn.query(query, [offsetId, limit]);
     return await Promise.all(result.map(val => parseEntry(val)));
   }
 
