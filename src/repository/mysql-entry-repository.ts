@@ -12,9 +12,9 @@ export class EntryNotFoundException extends Error {
 export class MySqlEntryRepository implements EntryRepository {
   constructor(private readonly conn: mysql.Pool) {}
 
-  async list(offset: number, limit: number): Promise<Entry[]> {
-    const query = "SELECT * FROM `entries` LIMIT ?, ?;";
-    const result = await this.conn.query(query, [limit, offset]);
+  async list(offsetId: number, limit: number): Promise<Entry[]> {
+    const query = "SELECT * FROM `entries` ORDER BY `id` DESC LIMIT ?, ?;";
+    const result = await this.conn.query(query, [limit, offsetId]);
     return await Promise.all(result.map(val => parseEntry(val)));
   }
 
