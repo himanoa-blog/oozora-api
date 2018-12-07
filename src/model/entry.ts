@@ -1,4 +1,6 @@
 import * as Joi from "joi";
+import Markdown from "markdown-it"
+import hljs from 'highlight.js';
 
 export interface Entry {
   id: number;
@@ -31,3 +33,21 @@ export async function parseEntry(
   });
   return result as Entry;
 }
+
+export function bodyToHtml(body: string): string {
+  const converter = new Markdown("commonmark", {
+    linkify: true,
+    highlight: function (str, lang) {
+      // Use: https://github.com/markdown-it/markdown-it#syntax-highlighting
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(lang, str).value;
+        } catch (__) {}
+      }
+      return ''; // use external default escaping
+      }
+  })
+  return converter.render(body)
+}
+
+export const toJson = (entry: Entry): Entry => ({ ...entry, ...{ body: bodyToHtml(entry.body)} })
