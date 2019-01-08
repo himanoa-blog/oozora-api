@@ -50,4 +50,4 @@ export function bodyToHtml(body: string): string {
   return converter.render(body)
 }
 
-export const toJson = (entry: Entry): Entry => ({ ...entry, ...{ body: bodyToHtml(entry.body)} })
+export const toJson = (entry: Entry) => ({ ...entry, ...{ html: bodyToHtml(entry.body)} })

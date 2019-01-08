@@ -41,9 +41,12 @@ router.get(
       })
       .validate(req.query);
     const entries = await new MySqlEntryRepository(pool).list(offset, limit);
-    res.status(200).json(entries.map(toJson));
-  })
-);
+    res.status(200).json({
+      count: await new MySqlEntryRepository(pool).length(),
+      entries: entries.map(toJson)
+    })
+  }
+));
 
 export default {
   path: "/entries",
