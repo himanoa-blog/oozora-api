@@ -7,8 +7,8 @@ export interface Entry {
   title: string;
   body: string;
   published: boolean;
-  updatedAt: Date;
-  createdAt: Date;
+  updatedAt: string;
+  createdAt: string;
   userId: number;
 }
 
@@ -22,8 +22,8 @@ export async function parseEntry(
       body: Joi.string().required(),
       published: Joi.boolean().required(),
       userId: Joi.number().required(),
-      updatedAt: Joi.date().required(),
-      createdAt: Joi.date().required()
+      updatedAt: Joi.string().required(),
+      createdAt: Joi.string().required()
     })
     .rename("user_id", "userId")
     .rename("updated_at", "updatedAt")

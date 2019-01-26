@@ -12,6 +12,7 @@ const connectionConfig: mysql.PoolConfig = {
   port: parseInt(process.env.DB_PORT || "", 10),
   database: process.env.DB_NAME,
   connectionLimit: 10,
+  timezone: "jst",
   typeCast: function(field, next) {
     if (field.type == "TINY" && field.length == 1) {
       return field.string() == "1"; // 1 = true, 0 = false
