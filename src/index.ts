@@ -36,7 +36,7 @@ function cors(
 ) {
   res.header(
     "Access-Control-Allow-Origin",
-    process.env.CORS_URLS || "http://localhost:4444"
+    process.env.CORS_URLS || "http://localhost:3000"
   );
   res.header("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS");
   res.header(

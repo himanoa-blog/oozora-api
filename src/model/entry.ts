@@ -44,8 +44,8 @@ export function bodyToHtml(body: string): string {
           return hljs.highlight(lang, str).value;
         } catch (__) {}
       }
-      return ''; // use external default escaping
-      }
+      return '<pre class="hljs"><code>' + new Markdown().utils.escapeHtml(str) + '</code></pre>';
+    }
   })
   return converter.render(body)
 }
