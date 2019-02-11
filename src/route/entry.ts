@@ -44,9 +44,9 @@ router.get(
     res.status(200).json({
       count: await new MySqlEntryRepository(pool).length(),
       entries: entries.map(toJson)
-    })
-  }
-));
+    });
+  })
+);
 
 export default {
   path: "/entries",
